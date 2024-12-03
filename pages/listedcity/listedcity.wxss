@@ -1,0 +1,26 @@
+/* pages/listedcity/listedcity.wxss */
+.weather-item{
+    display:flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid;
+    font-size: 50rpx;
+}
+.bj{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 100vh; 
+    z-index: -999;
+    position: fixed;
+}
+/* .weather-item {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  } */

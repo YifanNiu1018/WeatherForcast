@@ -1,0 +1,11 @@
+<!--pages/listedcity/listedcity.wxml-->
+<view>
+<image class="bj" src="/listedcitybj.png"></image>
+    <view wx:for="{{weatherData}}" wx:key="index">
+        <view class="weather-item" style="background-color: {{item.backgroundColor}}">
+            <text>{{item.city}}</text>
+            <text>{{item.temperature}}℃</text>
+        </view>
+    </view>
+    <button class="chooseCity"></button>
+</view>

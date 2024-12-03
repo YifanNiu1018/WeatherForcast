@@ -1,0 +1,47 @@
+{
+    "pages":[
+      "pages/weather/weather",
+      "pages/about/about",
+      "pages/city/city",
+      "pages/listedcity/listedcity"
+    ],
+    "permission": {
+      "scope.userLocation": {
+        "desc": "你的位置信息将用于小程序位置接口的效果展示" 
+      }
+    },
+    "requiredPrivateInfos": [
+      "getLocation"
+    ],
+    "window":{
+      "navigationBarBackgroundColor": "#fff",
+      "navigationBarTitleText": "天气预报",
+      "navigationBarTextStyle":"black",
+      "backgroundColor":"#A084FA",
+      "backgroundTextStyle":"light",
+      "enablePullDownRefresh":true 
+    },
+    "tabBar": {
+      "color": "#A084FA",
+      "selectedColor": "#F3202E",
+      "backgroundColor": "#ddd",
+      "borderStyle":"black",
+      "list": [{
+        "pagePath": "pages/weather/weather",
+        "iconPath": "images/tabbar/weather1.png",
+        "selectedIconPath": "images/tabbar/weather2.png",
+        "text": "核心城市详情"
+      }, {
+        "pagePath": "pages/listedcity/listedcity",
+        "iconPath": "images/tabbar/city1.png",
+        "selectedIconPath": "images/tabbar/city2.png",
+        "text": "城市列表"
+      }, {
+        "pagePath": "pages/about/about",
+        "iconPath": "images/tabbar/about1.png",
+        "selectedIconPath": "images/tabbar/about2.png",
+        "text": "关于我们"
+      }],
+      "position":"bottom"
+    }
+  }
