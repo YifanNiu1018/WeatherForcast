@@ -1,56 +1,154 @@
-//weather.js
-var amapFile = require('../../libs/amap-wx.130.js');
-var app = getApp();//获取当前小程序实例，方便使用全局方法和属性
+const config = require('../../config/config.js');
+const utils = require('../../utils/utils.js');
+const weatherApi = require('../../api/api.js');
+
 Page({
-  //1、页面数据部分
-  data:{cur_id:app.curid,basic:"",now:"",suggestion:"",weather:{}},//设置页面数据，后面空值将在页面显示时通过请求服务器获取
-  //2、系统事件部分
+  data: {
+    location: '',
+    City: '',
+    County: '',
+    now: null,
+    hourly: [],
+    daily: []
+  },
 
-  onLoad: function() {
-    var that = this;
-    var myAmapFun = new amapFile.AMapWX({key:'b634d2ce5709fe5db4a15012634d0600'});
-    myAmapFun.getWeather({
-      success: function(data){
-        that.setData({
-          weather: data
+  onLoad() {
+    this.getLocation();
+  },
+
+  async selectLocation() {
+    try {
+      const res = await new Promise((resolve, reject) => {
+        wx.chooseLocation({
+          success: resolve,
+          fail: reject
         });
-        console.log(data);
-      },
-      fail: function(info){
-         wx.showModal({title:info.errMsg})
-      }
-    })
+      });
+      
+      this.setData({
+        location: `${res.longitude},${res.latitude}`
+      });
+      
+      await Promise.all([
+        this.getWeather(),
+        this.getCityByLocation()
+      ]);
+    } catch (err) {
+      this.handleLocationError();
+    }
   },
 
-  onShow:function(){
-    var that = this;
-    wx.showToast({title: '加载中',icon: 'loading',duration: 10000})//设置加载模态框
-    that.getnow(function(d){//获取到数据的回调函数
-      wx.hideToast();
-      d.now.cond.src="http://files.heweather.com/cond_icon/"+d.now.cond.code+".png";
-      that.setData({basic:d.basic,now:d.now})//更新数据，视图将同步更新
-    })
-    that.getsuggestion(function(d){
-      that.setData({suggestion:d.suggestion})//更新数据
-    })},
-  //3、自定义页面方法：获取当前天气API
-  getnow:function(fn){
-    wx.request({//请求服务器，类似ajax
-      url: 'https://www.xiaoguge.cn/api/wxtest/now.php', 
-      data: {city:app.curid,key:'01a7798b060b468abdad006ea3de4713'},//和风天气提供用户key，可自行注册获得
-      header: {'Content-Type': 'application/json'},
-      success: function(res) {fn(res.data.HeWeather5[0]);}//成功后将数据传给回调函数执行
-    })
+  async getLocation() {
+    try {
+      const res = await new Promise((resolve, reject) => {
+        wx.getLocation({
+          type: 'gcj02',
+          success: resolve,
+          fail: reject
+        });
+      });
+      
+      this.setData({
+        location: `${res.longitude},${res.latitude}`
+      });
+      
+      await Promise.all([
+        this.getWeather(),
+        this.getCityByLocation()
+      ]);
+    } catch (err) {
+      this.handleLocationError();
+    }
   },
-  //获取生活指数API
-  getsuggestion:function(fn){
-    wx.request({
-      url: 'https://www.xiaoguge.cn/api/wxtest/suggestion.php', 
-      data: {city:app.curid,key:'01a7798b060b468abdad006ea3de4713'},
-      header: {'Content-Type': 'application/json'},
-      success: function(res) {fn(res.data.HeWeather5[0]);}
-    })
+
+  async getCityByLocation() {
+    try {
+      const res = await weatherApi.request(
+        `${config.BASE_URL.GEO}/city/lookup`,
+        { location: this.data.location }
+      );
+      
+      if (res.code === '200') {
+        const data = res.location[0];
+        this.setData({
+          City: data.adm2,
+          County: data.name
+        });
+      } else {
+        throw new Error('获取城市信息失败');
+      }
+    } catch (err) {
+      wx.showToast({
+        title: err.message || '获取城市信息失败',
+        icon: 'none'
+      });
+    }
   },
-  //4、页面事件绑定部分
-  bindViewTap:function(){wx.switchTab({url: '../city/city'})}//跳转菜单页面 
-})
+
+  async getWeather() {
+    wx.showLoading({ title: '加载中' });
+    
+    try {
+      const [nowRes, hourlyRes, dailyRes] = await Promise.all([
+        weatherApi.request(`${config.BASE_URL.WEATHER}/weather/now`, 
+          { location: this.data.location }),
+        weatherApi.request(`${config.BASE_URL.WEATHER}/weather/24h`, 
+          { location: this.data.location }),
+        weatherApi.request(`${config.BASE_URL.WEATHER}/weather/7d`, 
+          { location: this.data.location })
+      ]);
+
+      const hourly = hourlyRes.hourly.map(item => ({
+        ...item,
+        time: utils.formatTime(new Date(item.fxTime)).hourly
+      }));
+
+      const daily = dailyRes.daily.map(item => ({
+        ...item,
+        date: utils.formatTime(new Date(item.fxDate)).daily,
+        dateToString: utils.formatTime(new Date(item.fxDate)).dailyToString
+      }));
+
+      this.setData({
+        now: nowRes.now,
+        hourly,
+        daily
+      });
+    } catch (err) {
+      wx.showToast({
+        title: '获取天气信息失败',
+        icon: 'none'
+      });
+    } finally {
+      wx.hideLoading();
+    }
+  },
+
+  async handleLocationError() {
+    const res = await wx.showModal({
+      title: '获取位置信息失败',
+      content: '为了给您提供准确的天气预报服务,请在设置中授权【位置信息】'
+    });
+
+    if (res.confirm) {
+      try {
+        const settingRes = await wx.openSetting();
+        if (settingRes.authSetting['scope.userLocation']) {
+          await this.getLocation();
+        } else {
+          this.setDefaultLocation();
+        }
+      } catch (err) {
+        this.setDefaultLocation();
+      }
+    } else {
+      this.setDefaultLocation();
+    }
+  },
+
+  setDefaultLocation() {
+    this.setData({ location: '地理位置' });
+    this.getWeather();
+    this.getCityByLocation();
+  }
+});

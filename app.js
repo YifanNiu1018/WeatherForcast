@@ -1,20 +1,60 @@
-//app.js
+// app.js
 App({
-    //系统事件
-    onLaunch: function () {//小程序初始化事件
-      var that=this;
-      //调用API从本地缓存中获取数据
-      that.curid = wx.getStorageSync('curid') || that.curid;//API：获取本地缓存，若不存在设置为全局属性
-      that.setlocal('curid', that.curid);//调用全局方法
-    },
-  
-    /*******************************************************/
-  
-    //自定义全局方法
-    setlocal:function(id,val){
-      wx.setStorageSync(id, val);//API：设置本地缓存
-    },
-    //自定义全局属性
-    curid:"CN101010100",
-    version:"1.0"
-  })
+  globalData: {
+    APIKEY:'23aaeba5c9e849b396abc17bd746eaac',
+    locationId: '', 
+    latitude: '',   
+    longitude: '',
+    locationInfo: ''   
+  },
+
+  onLaunch: function() {
+    this.initLocation();
+  },
+
+  initLocation: function() {
+    var that = this;
+    wx.getLocation({
+      type: 'gcj02',
+      success: function(res) {
+        that.globalData.latitude = res.latitude;
+        that.globalData.longitude = res.longitude;
+        that.getLocationId(res.latitude, res.longitude);
+      },
+      fail: function() {
+        wx.showToast({
+          title: '需要位置权限',
+          icon: 'none'
+        });
+      }
+    });
+  },
+
+  getLocationId: function(latitude, longitude) {
+    var that = this;
+    wx.request({
+        url: 'https://devapi.qweather.com/v7/weather/24h?key=' + that.globalData.APIKEY + "&location=" + latitude + ',' + longitude,
+        success: function(res) {
+            console.log(res.data);
+            if (res.data.code === '200' && res.data.location && res.data.location[0]) {
+                that.globalData.locationId = res.data.location[0].id;
+                that.globalData.locationInfo = res.data.location[0];
+                if (that.locationReadyCallback) {
+                    that.locationReadyCallback(res.data.location[0].id);
+                }
+            }
+        },
+        fail: function(info){
+            wx.showModal({title: info.errMsg});
+        }
+    });
+},
+
+  getLocation: function(callback) {
+    if (this.globalData.locationId) {
+      callback(this.globalData.locationId);
+    } else {
+      this.locationReadyCallback = callback;
+    }
+  }
+});
