@@ -1,6 +1,6 @@
 <!--weather.wxml-->
 <view class="container">
-<image class="bj" src="../../images/weather/weatherPageBg.png"></image>
+<image class="bj" src="../../images/weatherPage/weatherPageBg.png"></image>
   <!--城市-->
   <view class="city" bindtap="bindViewTap">
     <image class="dwicon" src='../../images/weather/curcity.png'></image>
@@ -8,7 +8,7 @@
     <text class="update">最近更新时间：{{time}} </text>
   </view>
 
-  <view class="weather" bindtap="showcurid">
+  <view class="weather" bindtap="navigateTo7Days">
     <image class="section" src="/images/weather-icons/{{now.icon}}.svg"></image>
     <view class="aside">
       <text class="temperature">{{now.temp}}℃</text>
@@ -27,7 +27,7 @@
     <block wx:for="{{hourly}}" wx:key="index">
       <view class="item hourly">
         <view class="text-gray">{{item.time}}</view>
-        <image class="icon" src="/images/weather-icons/{{item.icon}}.png"></image>
+        <image class="icon" src="/images/weather-icons/{{item.icon}}.svg"></image>
         <view class="text-primary mb-32">{{item.temp}}°</view>
         <view>{{item.windDir}}</view>
         <view class="text-gray">{{item.windScale}}级</view>

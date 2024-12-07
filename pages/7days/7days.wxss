@@ -1,0 +1,82 @@
+.card-modular {
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #fff;
+  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.title-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.card-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.item.daily {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.item.daily:last-child {
+  border-bottom: none;
+}
+
+.date-info {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+}
+
+.date-string {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.weather-info {
+  flex: 1.6;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.weather-info .icon {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 5px;
+}
+
+.wind-info {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.text-gray {
+  color: #999;
+  font-size: 12px;
+}
+
+.text-primary {
+  color: #3399ff;
+  font-size: 16px;
+  margin-top: 5px;
+}
