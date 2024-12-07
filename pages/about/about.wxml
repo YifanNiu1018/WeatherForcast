@@ -1,14 +1,14 @@
 <!--index.wxml-->
 <view class="container">
-<image src="/images/icon/xiaozubj.png" mode=""/>
+<image src="../../images/aboutPage/xiaozubj.png" mode=""/>
   <view class="about">
   <text>产品名称：天气预报</text>
   <text>数据来源：</text>
   <text>开发时间：2024年12月</text>
   </view>
   <view class="about aboutme">
-    <text class="title">作者：15组</text>
-    <text class="title">组长：231250001牛一帆 </text>
+    <text class="title">小组：15组</text>
+    <text class="title">组长：231250004牛一帆 </text>
     <text class="title">组员：231250001李嘉诚 </text>
     <text class="title">组员：231250002甄翊霖 </text>
     <text class="title">组员：231250085李树 </text>
