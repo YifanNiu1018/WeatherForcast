@@ -5,10 +5,10 @@
   </view>
   <view class="citytable">
     <block wx:for="{{citylist}}">
-      <view class="province" >{{item.pro}}<image class="arrow" src="../../images/arrowright.png"></image></view>
+      <view class="province" >{{item.pro}}<image class="arrow" src="../../images/icon/arrowright.png"></image></view>
       <view class="leadlist">
         <block wx:for="{{item.larr}}">
-          <view class="leader">{{item.lea}}<image class="arrow" src="../../images/arrowright.png"></image></view>
+          <view class="leader">{{item.lea}}<image class="arrow" src="../../images/icon/arrowright.png"></image></view>
           <view class="citys">
           <block wx:for="{{item.carr}}">
             <text class="cityname" bindtap="selecttap" id="{{item.id}}">{{item.city}}</text>

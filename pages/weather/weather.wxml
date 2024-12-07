@@ -1,9 +1,9 @@
 <!--weather.wxml-->
 <view class="container">
-<image class="bj" src="/weatherbj.png"></image>
+<image class="bj" src="../../images/weather/weatherPageBg.png"></image>
   <!--城市-->
   <view class="city" bindtap="bindViewTap">
-    <image class="dwicon" src='../../images/curcity.png'></image>
+    <image class="dwicon" src='../../images/weather/curcity.png'></image>
     <text>当前城市：{{City}}市 | {{County}}区</text>
     <text class="update">最近更新时间：{{time}} </text>
   </view>
