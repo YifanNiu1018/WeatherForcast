@@ -9,7 +9,8 @@ Page({
     County: '',
     now: null,
     hourly: [],
-    daily: []
+    daily: [],
+    time: ''
   },
 
   onLoad() {
@@ -100,7 +101,7 @@ Page({
 
       const hourly = hourlyRes.hourly.map(item => ({
         ...item,
-        time: utils.formatTime(new Date(item.fxTime)).hourly
+        time: utils.formatObsTime(item.fxTime)
       }));
 
       const daily = dailyRes.daily.map(item => ({
@@ -109,11 +110,21 @@ Page({
         dateToString: utils.formatTime(new Date(item.fxDate)).dailyToString
       }));
 
+      const time = utils.formatObsTime(nowRes.now.obsTime)
+
+      console.log(hourly)
+      console.log(daily)
+
+
       this.setData({
         now: nowRes.now,
         hourly,
-        daily
+        daily,
+        time
       });
+
+      
+      
     } catch (err) {
       wx.showToast({
         title: '获取天气信息失败',

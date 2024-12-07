@@ -4,8 +4,8 @@
   <!--城市-->
   <view class="city" bindtap="bindViewTap">
     <image class="dwicon" src='../../images/curcity.png'></image>
-    <text>当前城市：{{City}}</text>
-    <text class="update">最近更新时间：{{now.obsTime}}</text>
+    <text>当前城市：{{City}}市 | {{County}}区</text>
+    <text class="update">最近更新时间：{{time}} </text>
   </view>
 
   <view class="weather" bindtap="showcurid">
@@ -20,5 +20,22 @@
       <view><text class="title">能见度</text><text class="info">{{now.vis}}km</text></view>
     </view>
   </view>
+
+  <view class="card-modular" wx:if="{{hourly}}">
+  <view class="title">24小时预报</view>
+  <view class="card-wrap">
+    <block wx:for="{{hourly}}" wx:key="index">
+      <view class="item hourly">
+        <view class="text-gray">{{item.time}}</view>
+        <image class="icon" src="/images/weather-icons/{{item.icon}}.png"></image>
+        <view class="text-primary mb-32">{{item.temp}}°</view>
+        <view>{{item.windDir}}</view>
+        <view class="text-gray">{{item.windScale}}级</view>
+      </view>
+    </block>
+  </view>
+  
+</view>
+
     
 </view>

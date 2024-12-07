@@ -14,7 +14,7 @@
 .city {padding: 5% 5%; overflow: hidden;}
 .city .dwicon{ width: 40rpx; height: 40rpx; float: left; margin: 5px;}
 .city text{font-size: 16px; color: #666; float: left; margin: 5px;}
-.city .update{ float: right; width: 150px;}
+.city .update{ display: flex}
 
 /*天气预报*/
 .weather{overflow: hidden;color: rgb(2, 3, 3); padding: 5%; }
@@ -27,11 +27,56 @@
 .weather .other .title{font-size: 12px; color: rgb(2, 3, 3); }
 .weather .other .info{ display: block; padding-top: 5%; }
 
-/*生活指数*/
-.suggestion{ margin-top: 5%;}
-.suggestion .title{ display: block; padding: 3% 5%; background: #58b; color: #fff;}
-.suggestion .list{ display: flex; font-size: 12px; margin-top: 1px; }
-.suggestion .list_l{ flex: 1; text-align: center; color: rgb(2, 3, 3); padding: 8px;}
-.suggestion .list_l image{ width:30px; height: 30px; display: block; margin: 0 auto;}
-.suggestion .list_r{ flex: 4; padding: 8px; color: rgb(2, 3, 3);}
-.suggestion .list_t{ font-size: 14px; display: block; margin-bottom: 5px; color: rgb(2, 3, 3);}
+
+.card-modular {
+  margin: 20rpx;
+  padding: 30rpx;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20rpx;
+}
+
+.card-modular .title {
+  font-size: 32rpx;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.card-wrap {
+  display: flex;
+  overflow-x: auto;
+  padding: 10rpx 0;
+}
+
+.item {
+  flex-shrink: 0;
+  text-align: center;
+  padding: 20rpx;
+}
+
+.item.hourly {
+  width: 140rpx;
+}
+
+.item.daily {
+  width: 180rpx;
+}
+
+.item .icon {
+  width: 60rpx;
+  height: 60rpx;
+  margin: 10rpx 0;
+}
+
+.text-gray {
+  color: #666;
+  font-size: 24rpx;
+}
+
+.text-primary {
+  color: #333;
+  font-size: 28rpx;
+}
+
+.mb-32 {
+  margin-bottom: 32rpx;
+}
