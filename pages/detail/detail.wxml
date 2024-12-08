@@ -1,22 +1,66 @@
-<!-- WXML -->
 <view class="weather-detail">
-  <text class="temperature">温度: {{detail.now.temp}}°</text>
-  <text class="feels-like">体感温度: {{detail.now.feelsLike}}°</text>
-  <view class="weather-main">
-    <image class="weather-icon" wx:if="{{detail.now.icon}}" src="/images/weather-icons/{{detail.now.icon}}.svg"></image>
-    <text class="weather-text">{{detail.now.text}}</text>
+  <!-- 主要天气信息 -->
+  <view class="main-info">
+    <view class="temp-container">
+      <text class="temperature">{{detail.now.temp}}</text>
+      <text class="degree">°</text>
+    </view>
+    <view class="weather-main">
+      <image class="weather-icon" wx:if="{{detail.now.icon}}" src="/images/weather-icons/{{detail.now.icon}}.svg"></image>
+      <text class="weather-text">{{detail.now.text}}</text>
+    </view>
+    <text class="feels-like">体感温度 {{detail.now.feelsLike}}°</text>
   </view>
-  <view class="wind-info">
-    <text>风向: {{detail.now.windDir}} ({{detail.now.wind360}}°)</text>
-    <text>风速: {{detail.now.windSpeed}} m/s</text>
-    <text>风力等级: {{detail.now.windScale}} 级</text>
+
+  <!-- 风力信息卡片 -->
+  <view class="info-card wind-card">
+    <view class="card-title">
+      <image class="card-icon" src="/images/wind-icon.png"></image>
+      <text>风力状况</text>
+    </view>
+    <view class="wind-info">
+      <view class="info-item">
+        <text class="label">风向</text>
+        <text class="value">{{detail.now.windDir}}</text>
+      </view>
+      <view class="info-item">
+        <text class="label">风速</text>
+        <text class="value">{{detail.now.windSpeed}} m/s</text>
+      </view>
+      <view class="info-item">
+        <text class="label">风力等级</text>
+        <text class="value">{{detail.now.windScale}} 级</text>
+      </view>
+    </view>
   </view>
-  <view class="additional-info">
-    <text>湿度: {{detail.now.humidity}}%</text>
-    <text>降水量: {{detail.now.precip}} mm</text>
-    <text>气压: {{detail.now.pressure}} hPa</text>
-    <text>能见度: {{detail.now.vis}} km</text>
-    <text>云量: {{detail.now.cloud}}%</text>
-    <text>露点: {{detail.now.dew}}°</text>
+
+  <!-- 详细气象指标卡片 -->
+  <view class="info-card detail-card">
+    <view class="detail-grid">
+      <view class="grid-item">
+        <text class="label">湿度</text>
+        <text class="value">{{detail.now.humidity}}%</text>
+      </view>
+      <view class="grid-item">
+        <text class="label">降水量</text>
+        <text class="value">{{detail.now.precip}} mm</text>
+      </view>
+      <view class="grid-item">
+        <text class="label">气压</text>
+        <text class="value">{{detail.now.pressure}} hPa</text>
+      </view>
+      <view class="grid-item">
+        <text class="label">能见度</text>
+        <text class="value">{{detail.now.vis}} km</text>
+      </view>
+      <view class="grid-item">
+        <text class="label">云量</text>
+        <text class="value">{{detail.now.cloud}}%</text>
+      </view>
+      <view class="grid-item">
+        <text class="label">露点</text>
+        <text class="value">{{detail.now.dew}}°</text>
+      </view>
+    </view>
   </view>
 </view>
