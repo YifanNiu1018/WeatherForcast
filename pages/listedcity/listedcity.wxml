@@ -1,19 +1,41 @@
+<!-- weather.wxml -->
 <view class="container">
-<image class="bj" src="../../images/cityPage/1.png"></image>
+  <image class="bj" src="../../images/cityPage/1.png"></image>
 
-  <view class="title">天气</view>
   <view class="search-bar">
-    <input class="search-input" placeholder="搜索城市" bindinput="onSearchInput" bindconfirm="onSearchConfirm" />
-    <button class="search-button" bindtap="onSearchClick">搜索</button>
+    <input 
+      class="search-input" 
+      placeholder="请输入城市名称" 
+      value="{{searchQuery}}"
+      bindinput="onSearchInput" 
+      bindconfirm="onSearchConfirm" 
+    />
+    <button class="search-button" bindtap="onSearchClick">添加</button>
   </view>
 
-  <view class="city-list">
-  <block wx:for="{{cities}}" wx:key="index">
-    <view class="city-item">
-      <text class="city-name">{{item.name}}</text>
-      <text class="city-weather">{{item.weather}}</text>
-      <button class="delete-button" bindtap="onDeleteCity" data-city="{{item.name}}">删除</button>
-    </view>
-  </block>
-</view>
+  <scroll-view 
+    class="city-list" 
+    scroll-y 
+    enable-flex
+    refresher-enabled="{{true}}"
+    bindrefresherrefresh="onPullDownRefresh"
+  >
+    <block wx:for="{{cities}}" wx:key="name">
+      <view class="city-item" bindtap="navigateToDetail" data-item="{{item}}" >
+        <view class="city-info">
+          <text class="city-name">{{item.name}}</text>
+        </view>
+        <view class="weather-info">
+          <image class="icon" src="/images/weather-icons/{{item.now.icon}}.svg"></image>
+          <text class="temperature">{{item.now.temp}}°</text>
+          <text class="weather-text">{{item.now.text}}</text>
+        </view>
+        <button 
+          class="delete-button" 
+          bindtap="onDeleteCity" 
+          data-city="{{item.name}}"
+        >删除</button>
+      </view>
+    </block>
+  </scroll-view>
 </view>

@@ -1,0 +1,22 @@
+<!-- WXML -->
+<view class="weather-detail">
+  <text class="temperature">温度: {{detail.now.temp}}°</text>
+  <text class="feels-like">体感温度: {{detail.now.feelsLike}}°</text>
+  <view class="weather-main">
+    <image class="weather-icon" wx:if="{{detail.now.icon}}" src="/images/weather-icons/{{detail.now.icon}}.svg"></image>
+    <text class="weather-text">{{detail.now.text}}</text>
+  </view>
+  <view class="wind-info">
+    <text>风向: {{detail.now.windDir}} ({{detail.now.wind360}}°)</text>
+    <text>风速: {{detail.now.windSpeed}} m/s</text>
+    <text>风力等级: {{detail.now.windScale}} 级</text>
+  </view>
+  <view class="additional-info">
+    <text>湿度: {{detail.now.humidity}}%</text>
+    <text>降水量: {{detail.now.precip}} mm</text>
+    <text>气压: {{detail.now.pressure}} hPa</text>
+    <text>能见度: {{detail.now.vis}} km</text>
+    <text>云量: {{detail.now.cloud}}%</text>
+    <text>露点: {{detail.now.dew}}°</text>
+  </view>
+</view>

@@ -1,4 +1,5 @@
-const config = require('../../config/config.js');
+
+const config = require('../../config/config.js');  
 const utils = require('../../utils/utils.js');
 const weatherApi = require('../../api/api.js');
 
@@ -95,7 +96,6 @@ Page({
 
   async getWeather() {
     wx.showLoading({ title: '加载中' });
-
     try {
       const [nowRes, hourlyRes, dailyRes] = await Promise.all([
         weatherApi.request(`${config.BASE_URL.WEATHER}/weather/now`,
