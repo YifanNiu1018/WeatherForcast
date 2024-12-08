@@ -41,10 +41,10 @@
 }
 
 .weather .section {
-  float: left;
-  width: 100px;
-  height: 100px;
-  display: block;
+    float: left;
+    width: 200px;
+    height: 100px;
+    display: block;
 }
 
 .weather .aside {
