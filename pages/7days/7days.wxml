@@ -1,0 +1,28 @@
+<view class="card-modular" wx:if="{{daily}}">
+  <view class="title">
+  <image src="/images/title-icon.png" class="title-icon"></image>
+  <text>7天预报</text>
+  </view>
+  <view class="card-wrap">
+    <block wx:for="{{daily}}" wx:key="index">
+      <view class="item daily">
+        <!-- 日期信息 -->
+        <view class="date-info">
+          <text class="date-string">{{item.dateToString}}</text>
+          <text class="text-gray">{{item.date}}</text>
+        </view>
+        <!-- 天气图标和温度 -->
+        <view class="weather-info">
+          <image class="icon" src="/images/weather-icons/{{item.iconDay}}.svg"></image>
+          <text class="text-primary">{{item.tempMin}}°~{{item.tempMax}}°</text>
+          <text class="text-gray">{{item.textDay}}</text>
+        </view>
+        <!-- 风力信息 -->
+        <view class="wind-info">
+          <text>{{item.windDirDay}}</text>
+          <text class="text-gray">{{item.windScaleDay}}级</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

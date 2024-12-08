@@ -13,6 +13,13 @@ Page({
     time: ''
   },
 
+  navigateTo7Days: function() {
+    wx.setStorageSync('daily', this.data.daily);
+    wx.navigateTo({
+      url: '/pages/7days/7days'
+    });
+  },
+
   onLoad() {
     this.getLocation();
   },
@@ -111,10 +118,6 @@ Page({
       }));
 
       const time = utils.formatObsTime(nowRes.now.obsTime)
-
-      console.log(hourly)
-      console.log(daily)
-
 
       this.setData({
         now: nowRes.now,

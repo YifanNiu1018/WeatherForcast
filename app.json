@@ -2,7 +2,9 @@
   "pages": [
     "pages/weather/weather",
     "pages/about/about",
-    "pages/listedcity/listedcity"
+    "pages/city/city",
+    "pages/listedcity/listedcity",
+    "pages/7days/7days"
   ],
   "permission": {
     "scope.userLocation": {
