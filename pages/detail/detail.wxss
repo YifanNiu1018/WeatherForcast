@@ -1,51 +1,118 @@
-/* WXSS */
 .weather-detail {
-  padding: 16rpx;
-  background-color: #ffffff;
+  padding: 32rpx;
+  background: linear-gradient(180deg, #f0f6ff 0%, #ffffff 100%);
 }
 
-.obs-time {
-  font-size: 24rpx;
-  color: #666666;
-  margin-bottom: 8rpx;
+/* 主要天气信息样式 */
+.main-info {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.temp-container {
+  display: inline-flex;
+  align-items: flex-start;
 }
 
 .temperature {
-  font-size: 48rpx;
-  color: #ff6600;
-  margin-bottom: 8rpx;
+  font-size: 120rpx;
+  color: #333333;
+  font-weight: 300;
+  line-height: 1;
 }
 
-.feels-like {
-  font-size: 28rpx;
+.degree {
+  font-size: 60rpx;
   color: #333333;
-  margin-bottom: 16rpx;
+  margin-top: 12rpx;
 }
 
 .weather-main {
   display: flex;
   align-items: center;
-  margin-bottom: 16rpx;
+  justify-content: center;
+  margin: 16rpx 0;
 }
 
 .weather-icon {
-  width: 64rpx;
-  height: 64rpx;
+  width: 80rpx;
+  height: 80rpx;
   margin-right: 16rpx;
 }
 
 .weather-text {
-  font-size: 32rpx;
+  font-size: 36rpx;
   color: #333333;
 }
 
-.wind-info, .additional-info {
+.feels-like {
+  font-size: 28rpx;
+  color: #666666;
+}
+
+/* 信息卡片通用样式 */
+.info-card {
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  font-size: 30rpx;
+  color: #333333;
+}
+
+.card-icon {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 12rpx;
+}
+
+/* 风力信息样式 */
+.wind-info .info-item {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 16rpx;
 }
 
-.wind-info text, .additional-info text {
-  display: block;
-  font-size: 28rpx;
-  color: #555555;
-  margin-bottom: 4rpx;
+/* 详细指标网格样式 */
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24rpx;
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+}
+
+.label {
+  font-size: 26rpx;
+  color: #666666;
+  margin-bottom: 8rpx;
+}
+
+.value {
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: 500;
+}
+
+/* 添加简单动画 */
+.info-card {
+  transition: all 0.3s ease;
+}
+
+.info-card:active {
+  transform: scale(0.98);
 }
