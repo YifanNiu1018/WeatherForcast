@@ -1,72 +1,87 @@
-/**weather.wxss**/
-
 .bj {
-    /* background-image: url("../../images/weather/weatherbj.png"); */
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    display: block;
-    width: 100%;
-    height: 100vh;
-    z-index: -999;
-    position: fixed;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  z-index: -999;
+  position: fixed;
 }
 
 /*城市信息*/
-.city {padding: 5% 5%; overflow: hidden;}
-.city .dwicon{ width: 40rpx; height: 40rpx; float: left; margin: 5px;}
-.city text{font-size: 16px; color: #666; float: left; margin: 5px;}
-.city .update{ display: flex}
+.city {
+  padding: 5% 5%;
+  overflow: hidden;
+}
+
+.city .dwicon {
+  width: 40rpx;
+  height: 40rpx;
+  float: left;
+  margin: 5px;
+}
+
+.city text {
+  font-size: 16px;
+  color: #666;
+  float: left;
+  margin: 5px;
+}
+
+.city .update {
+  display: flex
+}
 
 /*天气预报*/
 .weather {
-    overflow: hidden;
-    color: rgb(2, 3, 3);
-    padding: 5%;
+  overflow: hidden;
+  color: rgb(2, 3, 3);
+  padding: 5%;
 }
 
 .weather .section {
-    float: left;
-    width: 100px;
-    height: 100px;
-    display: block;
+  float: left;
+  width: 100px;
+  height: 100px;
+  display: block;
 }
 
 .weather .aside {
-    float: right;
-    width: 40%;
-    margin-top: 5%;
-    font-size: 12px;
+  float: right;
+  width: 40%;
+  margin-top: 5%;
+  font-size: 12px;
 }
 
 .weather .aside .temperature {
-    font-size: 36px;
-    display: block;
+  font-size: 36px;
+  display: block;
 }
 
 .weather .other {
-    clear: both;
-    padding-top: 5%;
-    display: flex;
+  clear: both;
+  padding-top: 5%;
+  display: flex;
 }
 
 .weather .other view {
-    flex: 1;
-    text-align: center;
+  flex: 1;
+  text-align: center;
 }
 
 .weather .other .border_r {
-    border-right: solid 1px #bbd;
+  border-right: solid 1px #bbd;
 }
 
 .weather .other .title {
-    font-size: 12px;
-    color: rgb(2, 3, 3);
+  font-size: 12px;
+  color: rgb(2, 3, 3);
 }
 
 .weather .other .info {
-    display: block;
-    padding-top: 5%;
+  display: block;
+  padding-top: 5%;
 }
 
 .card-modular {

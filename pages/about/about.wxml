@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-<image src="../../images/aboutPage/xiaozubj.png" mode=""/>
+<image src="../../images/aboutPage/1.png" mode=""/>
   <view class="about">
   <text>产品名称：天气预报</text>
   <text>数据来源：</text>
