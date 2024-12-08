@@ -29,5 +29,20 @@ module.exports = {
       console.error('时间格式化错误:', error);
       return obsTime;
     }
+  },
+
+  formatHourlyData: function(hourlyData) {
+    return hourlyData.map(item => ({
+      ...item,
+      time: this.formatObsTime(item.fxTime)
+    }));
+  },
+
+  formatDailyData: function(dailyData) {
+    return dailyData.map(item => ({
+      ...item,
+      date: this.formatTime(new Date(item.fxDate)).daily,
+      dateToString: this.formatTime(new Date(item.fxDate)).dailyToString
+    }));
   }
 };
