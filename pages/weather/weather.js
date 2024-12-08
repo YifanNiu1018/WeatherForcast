@@ -13,7 +13,7 @@ Page({
     time: ''
   },
 
-  navigateTo7Days: function() {
+  navigateTo7Days: function () {
     wx.setStorageSync('daily', this.data.daily);
     wx.navigateTo({
       url: '/pages/7days/7days'
@@ -32,11 +32,11 @@ Page({
           fail: reject
         });
       });
-      
+
       this.setData({
         location: `${res.longitude},${res.latitude}`
       });
-      
+
       await Promise.all([
         this.getWeather(),
         this.getCityByLocation()
@@ -55,11 +55,11 @@ Page({
           fail: reject
         });
       });
-      
+
       this.setData({
         location: `${res.longitude},${res.latitude}`
       });
-      
+
       await Promise.all([
         this.getWeather(),
         this.getCityByLocation()
@@ -75,7 +75,7 @@ Page({
         `${config.BASE_URL.GEO}/city/lookup`,
         { location: this.data.location }
       );
-      
+
       if (res.code === '200') {
         const data = res.location[0];
         this.setData({
@@ -95,14 +95,14 @@ Page({
 
   async getWeather() {
     wx.showLoading({ title: '加载中' });
-    
+
     try {
       const [nowRes, hourlyRes, dailyRes] = await Promise.all([
-        weatherApi.request(`${config.BASE_URL.WEATHER}/weather/now`, 
+        weatherApi.request(`${config.BASE_URL.WEATHER}/weather/now`,
           { location: this.data.location }),
-        weatherApi.request(`${config.BASE_URL.WEATHER}/weather/24h`, 
+        weatherApi.request(`${config.BASE_URL.WEATHER}/weather/24h`,
           { location: this.data.location }),
-        weatherApi.request(`${config.BASE_URL.WEATHER}/weather/7d`, 
+        weatherApi.request(`${config.BASE_URL.WEATHER}/weather/7d`,
           { location: this.data.location })
       ]);
 
@@ -126,8 +126,8 @@ Page({
         time
       });
 
-      
-      
+
+
     } catch (err) {
       wx.showToast({
         title: '获取天气信息失败',

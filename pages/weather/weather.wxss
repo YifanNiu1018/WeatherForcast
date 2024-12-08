@@ -27,7 +27,7 @@
 
 .weather .section {
     float: left;
-    width: 100px;
+    width: 200px;
     height: 100px;
     display: block;
 }
