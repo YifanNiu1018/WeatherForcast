@@ -22,12 +22,22 @@
   margin: 5px;
 }
 
-.city text {
-  font-size: 16px;
-  color: #666;
-  float: left;
-  margin: 5px;
-}
+
+.city .text1 {
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    float: left;
+    margin: 5px;
+    display: flex
+  }
+
+  .city .text2 {
+    font-size: 16px;
+    color: rgb(223, 213, 213);
+    float: left;
+    margin: 5px;
+    display: flex
+  }
 
 .city .update {
   display: flex
@@ -39,6 +49,7 @@
   color: rgb(2, 3, 3);
   padding: 5%;
 }
+
 
 .weather .section {
     float: left;
@@ -87,14 +98,16 @@
 .card-modular {
   margin: 20rpx;
   padding: 30rpx;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 20rpx;
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.5); /* 添加阴影效果 */
 }
 
 .card-modular .title {
   font-size: 32rpx;
   color: #333;
   margin-bottom: 20rpx;
+  
 }
 
 .card-wrap {
