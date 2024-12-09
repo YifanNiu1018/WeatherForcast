@@ -31,6 +31,12 @@ module.exports = {
     }
   },
 
+  formathour: function(time) {
+    const date = new Date(time);
+    const hour = String(date.getHours()).padStart(2, '0');
+    return hour;
+  },
+
   formatHourlyData: function(hourlyData) {
     return hourlyData.map(item => ({
       ...item,
