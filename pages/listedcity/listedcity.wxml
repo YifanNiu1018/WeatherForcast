@@ -26,13 +26,13 @@
           <text class="city-name">{{item.name}}</text>
         </view>
         <view class="weather-info">
-          <image class="icon" src="/images/weather-icons/{{item.now.icon}}.svg"></image>
+          <image class="icon" src="../../images/weather-icons/{{item.now.icon}}.svg"></image>
           <text class="temperature">{{item.now.temp}}°</text>
           <text class="weather-text">{{item.now.text}}</text>
         </view>
         <button 
           class="delete-button" 
-          bindtap="onDeleteCity" 
+          catchtap="onDeleteCity" 
           data-city="{{item.name}}"
         >删除</button>
       </view>

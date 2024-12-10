@@ -14,7 +14,7 @@ Page({
     const item = event.currentTarget.dataset.item;
     wx.setStorageSync('detail', item);
     wx.navigateTo({
-      url: '/pages/detail/detail'
+      url: '../../pages/detail/detail'
     });
   },
 
@@ -148,30 +148,29 @@ Page({
   },
 
   // 删除城市
-async onDeleteCity(event) {
-  const cityName = event.currentTarget.dataset.city;
-  
-  // 显示确认弹窗
-  const res = await wx.showModal({
-    title: '确认删除',
-    content: `是否要删除城市"${cityName}"？`,
-    confirmText: '删除',
-    confirmColor: '#FF0000',
-    cancelText: '取消'
-  });
-
-  // 用户点击确认后执行删除
-  if (res.confirm) {
-    const newCities = this.data.cities.filter(item => item.name !== cityName);
-    this.updateCitiesList(newCities);
-    
-    wx.showToast({
-      title: '删除成功',
-      icon: 'success',
-      duration: 1500
+  async onDeleteCity(event) {
+    const cityName = event.currentTarget.dataset.city;
+    // 显示确认弹窗
+    const res = await wx.showModal({
+      title: '确认删除',
+      content: `是否要删除城市"${cityName}"？`,
+      confirmText: '删除',
+      confirmColor: '#FF0000',
+      cancelText: '取消'
     });
-  }
-},
+
+    // 用户点击确认后执行删除
+    if (res.confirm) {
+      const newCities = this.data.cities.filter(item => item.name !== cityName);
+      this.updateCitiesList(newCities);
+
+      wx.showToast({
+        title: '删除成功',
+        icon: 'success',
+        duration: 1500
+      });
+    }
+  },
 
   // 处理回车搜索
   onSearchConfirm() {
