@@ -1,6 +1,6 @@
 <!-- weather.wxml -->
 <view class="container">
-  <image class="bj" src="../../images/cityPage/1.png"></image>
+  <image class="bj" src="../../images/cityPage/3.jpg"></image>
 
   <view class="search-bar">
     <input 

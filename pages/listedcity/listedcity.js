@@ -7,7 +7,7 @@ Page({
   data: {
     cities: [],
     searchQuery: '',
-    isLoading: false
+    isLoading: false,
   },
 
   navigateToDetail: function (event) {
@@ -55,6 +55,9 @@ Page({
 
     this.updateCitiesList(updatedCities);
   },
+
+  
+    
 
   // 监听搜索框输入
   onSearchInput(event) {
