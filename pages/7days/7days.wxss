@@ -20,6 +20,7 @@
   width: 24px;
   height: 24px;
   margin-right: 8px;
+  margin-top: -2px;
 }
 
 .card-wrap {
@@ -31,9 +32,13 @@
   display: flex;
   align-items: center;
   padding: 12px 0;
-  border-bottom: 1px solid #eaeaea;
+  border-bottom: 1px solid #f0f0f0;
 }
 
+.item.daily:nth-child(odd) {
+    background-color: #fafafa;
+  }
+  
 .item.daily:last-child {
   border-bottom: none;
 }
@@ -45,9 +50,10 @@
 }
 
 .date-string {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   color: #333;
+  margin-bottom: 3px;
 }
 
 .weather-info {
@@ -58,9 +64,9 @@
 }
 
 .weather-info .icon {
-  width: 36px;
-  height: 36px;
-  margin-bottom: 5px;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 4px;
 }
 
 .wind-info {
@@ -73,6 +79,7 @@
 .text-gray {
   color: #999;
   font-size: 12px;
+  margin-top: 2px;
 }
 
 .text-primary {
