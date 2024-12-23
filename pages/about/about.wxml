@@ -1,5 +1,5 @@
 <view class="container">
-  <image class="bg-image" src="../../images/aboutPage/1.png" mode="aspectFill"/>
+  <image class="bg-image" src="../../images/aboutPage/2.png" mode="aspectFill"/>
 
   <view class="content-wrapper">
     <view class="header animate-in">
