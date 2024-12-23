@@ -32,7 +32,7 @@
         </view>
         <button 
           class="delete-button" 
-          bindtap="onDeleteCity" 
+          catchtap="onDeleteCity" 
           data-city="{{item.name}}"
         >删除</button>
       </view>

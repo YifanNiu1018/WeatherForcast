@@ -30,7 +30,6 @@ module.exports = {
       if (!this.isLatLonFormat(location)) {
         location = await this.getCityLocation(location);
       }
-      console.log(location)
       const res = await this.request(
         `${config.BASE_URL.WEATHER}/weather/now`, 
         { location }

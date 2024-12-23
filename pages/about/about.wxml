@@ -1,18 +1,45 @@
-<!--index.wxml-->
 <view class="container">
-<image src="../../images/aboutPage/1.png" mode=""/>
-  <view class="about">
-  <text>产品名称：天气预报</text>
-  <text>数据来源：</text>
-  <text>开发时间：2024年12月</text>
-  </view>
-  <view class="about aboutme">
-    <text class="title">小组：15组</text>
-    <text class="title">组长：231250004牛一帆 </text>
-    <text class="title">组员：231250001李嘉诚 </text>
-    <text class="title">组员：231250002甄翊霖 </text>
-    <text class="title">组员：231250085李树 </text>
-    <text class="title">组员：231250119谢卓凡 </text>
-    <text class="title">邮箱：231250001@smail.nju.edu.cn</text>
+  <image class="bg-image" src="../../images/aboutPage/1.png" mode="aspectFill"/>
+
+  <view class="content-wrapper">
+    <view class="header animate-in">
+      <text class="team-title">天气预报小程序研发团队</text>
+      <text class="team-num">Team 15</text>
+      <view class="divider"></view>
+    </view>
+
+    <view class="team-container animate-in">
+      <view class="member-card leader">
+        <view class="role">
+          <text class="role-text">组长</text>
+          <view class="role-icon">👑</view>
+        </view>
+        <view class="info">
+          <text class="name">牛一帆</text>
+          <text class="id">231250004</text>
+        </view>
+      </view>
+
+      <view class="members-grid">
+        <view class="member-card" wx:for="{{[{name:'李嘉诚', id:'231250001'},{name:'甄翊霖', id:'231250002'},{name:'李树', id:'231250085'},{name:'谢卓凡', id:'231250119'}]}}" wx:key="id">
+          <view class="role">
+            <text class="role-text">组员</text>
+            <view class="role-icon">👤</view>
+          </view>
+          <view class="info">
+            <text class="name">{{item.name}}</text>
+            <text class="id">{{item.id}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="contact animate-in">
+      <text class="contact-title">联系我们</text>
+      <view class="email-container">
+        <text class="email-icon">📧</text>
+        <text class="email">231250001@smail.nju.edu.cn</text>
+      </view>
+    </view>
   </view>
 </view>
