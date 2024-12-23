@@ -124,7 +124,7 @@ Page({
       const hour = utils.formathour(nowRes.now.obsTime)
       if (hour >= 18 || hour < 7) {
         // 18:00之后和7:00之前使用的图片
-        this.setData({ images: '../../images/weatherPage/4.jpg' });
+        this.setData({ images: '../../images/weatherPage/111.jpg' });
         this.setData({ citytext: 'text2'});
       } else {
         // 其余时间使用的图片
