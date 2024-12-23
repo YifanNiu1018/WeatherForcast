@@ -1,6 +1,6 @@
 <!-- weather.wxml -->
 <view class="container">
-  <image class="bj" src="../../images/cityPage/1.png"></image>
+  <image class="bj" src="../../images/cityPage/3.jpg"></image>
 
   <view class="search-bar">
     <input 
@@ -26,7 +26,7 @@
           <text class="city-name">{{item.name}}</text>
         </view>
         <view class="weather-info">
-          <image class="icon" src="/images/weather-icons/{{item.now.icon}}.svg"></image>
+          <image class="icon" src="../../images/weather-icons/{{item.now.icon}}.svg"></image>
           <text class="temperature">{{item.now.temp}}°</text>
           <text class="weather-text">{{item.now.text}}</text>
         </view>

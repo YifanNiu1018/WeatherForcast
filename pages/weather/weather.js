@@ -11,7 +11,9 @@ Page({
     now: null,
     hourly: [],
     daily: [],
-    time: ''
+    time: '',
+    images: '',
+    citytext: '',
   },
 
   navigateTo7Days: function () {
@@ -24,6 +26,7 @@ Page({
   onLoad() {
     this.getLocation();
   },
+ 
 
   async selectLocation() {
     try {
@@ -118,6 +121,17 @@ Page({
       }));
 
       const time = utils.formatObsTime(nowRes.now.obsTime)
+      const hour = utils.formathour(nowRes.now.obsTime)
+      if (hour >= 18 || hour < 7) {
+        // 18:00之后和7:00之前使用的图片
+        this.setData({ images: '../../images/weatherPage/4.jpg' });
+        this.setData({ citytext: 'text2'});
+      } else {
+        // 其余时间使用的图片
+        this.setData({ images: '../../images/weatherPage/3.jpg' });
+        this.setData({ citytext: 'text1'});
+      }
+    
 
       this.setData({
         now: nowRes.now,
@@ -125,7 +139,7 @@ Page({
         daily,
         time
       });
-
+      
 
 
     } catch (err) {
@@ -137,6 +151,7 @@ Page({
       wx.hideLoading();
     }
   },
+
 
   async handleLocationError() {
     const res = await wx.showModal({
